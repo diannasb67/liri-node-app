@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+var fs = require('fs');
+
 var keys = require("./keys.js");
 
 var Spotify = require('node-spotify-api');
@@ -49,19 +51,19 @@ function spotifyThisSong(song = '') {
 
 }
 
-function movieThis(Title = "aquaman") {
-    getMovie = "";
+function movieThis(title = "") {
+    // getMovie = "";
 
-    request('http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy', function (error, response, body) {
-        console.log("Title: " + JSON.parse(body).Title);
-        console.log("Release Year: " + JSON.parse(body).Year);
-        console.log("IMDB Ratings: " + JSON.parse(body).imdbRating);
-        console.log("Rotten Tomatoes Rating: " + JSON.parse(body).RottenTomatoes);
-        console.log("Country: " + JSON.parse(body).Country);
-        console.log("Language: " + JSON.parse(body).Language);
-        console.log("Plot: " + JSON.parse(body).Plot);
-        console.log("Actors: " + JSON.parse(body).Actors);
-    })
+    // request('http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy', function (error, response, body) {
+    //     console.log("Title: " + JSON.parse(body).Title);
+    //     console.log("Release Year: " + JSON.parse(body).Year);
+    //     console.log("IMDB Ratings: " + JSON.parse(body).imdbRating);
+    //     console.log("Rotten Tomatoes Rating: " + JSON.parse(body).RottenTomatoes);
+    //     console.log("Country: " + JSON.parse(body).Country);
+    //     console.log("Language: " + JSON.parse(body).Language);
+    //     console.log("Plot: " + JSON.parse(body).Plot);
+    //     console.log("Actors: " + JSON.parse(body).Actors);
+    // })
 }
 
 
