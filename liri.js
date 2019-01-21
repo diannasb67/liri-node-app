@@ -8,16 +8,18 @@ var spotify = new Spotify(keys.spotify);
 
 var programToRun = process.argv[2];
 
-var action = process.argv[3];
+var action = process.argv[3]; //spotify
 
-if (programToRun === "concert-this") {
-    concertThis();
+var getMovie = process.argv[4]; //movie
 
-} else if (programToRun === "spotify-this-song") {
+var request = require("request");
+
+
+if (programToRun === "spotify-this-song") {
     spotifyThisSong(action);
 
 } else if (programToRun === "movie-this") {
-    movieThis();
+    movieThis(getMovie);
 
 } else if (programToRun === "do-what-it-says") {
     doWhatItSays();
@@ -27,11 +29,8 @@ if (programToRun === "concert-this") {
 
 }
 
-function concertThis() {
-    console.log("running concert program");
-}
 
-function spotifyThisSong(song = 'All the Small Things') {
+function spotifyThisSong(song = '') {
     spotify.search({ type: 'track', query: song }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
@@ -50,12 +49,25 @@ function spotifyThisSong(song = 'All the Small Things') {
 
 }
 
-function movieThis() {
-    console.log("running movie-this")
+function movieThis(Title = "aquaman") {
+    getMovie = "";
+
+    request('http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy', function (error, response, body) {
+        console.log("Title: " + JSON.parse(body).Title);
+        console.log("Release Year: " + JSON.parse(body).Year);
+        console.log("IMDB Ratings: " + JSON.parse(body).imdbRating);
+        console.log("Rotten Tomatoes Rating: " + JSON.parse(body).RottenTomatoes);
+        console.log("Country: " + JSON.parse(body).Country);
+        console.log("Language: " + JSON.parse(body).Language);
+        console.log("Plot: " + JSON.parse(body).Plot);
+        console.log("Actors: " + JSON.parse(body).Actors);
+    })
 }
+
 
 function doWhatItSays() {
     console.log("running do what it says")
 }
+
 
 
