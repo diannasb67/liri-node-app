@@ -22,6 +22,9 @@ if (programToRun === "spotify-this-song") {
 } else if (programToRun === "do-what-it-says") {
     doWhatItSays(action);
 
+} else if (programToRun === "write-this") {
+    writeThis(action);
+
 } else {
     console.log("error check entry")
 
@@ -83,6 +86,15 @@ function doWhatItSays() {
 
     });
 
-
-
 };
+
+//BONUS
+
+function writeThis() {
+
+    fs.appendFile("log.txt", action, function (err) {
+        if (err) console.log(err);
+        console.log("write successful");
+
+    })
+}
